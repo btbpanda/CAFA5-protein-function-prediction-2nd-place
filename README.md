@@ -12,6 +12,7 @@ Download.ipynb              : since produced artifacts are quite large, we consi
 config.yaml                 : config used to execute training and inference. **Note!!** the artifacts will be stored for 6 month only. After that, you will need to compute it by yourself.
 create-pytorch-env.sh       : install all the requirements to run all deep learning parts
 create-rapids-env.sh        : install all the requirements to run processing and ML steps
+CAFA5docs.pdf               : detailed solution description
 
 
 # HARDWARE 

@@ -1,5 +1,4 @@
 # solution artifacts
-
 embeds/
 helpers/
 models/
@@ -11,6 +10,7 @@ logs.txt
 Test\ \(Targets\)/
 Train/
 Untitled.ipynb
+wget-log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

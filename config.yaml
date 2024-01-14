@@ -1,0 +1,187 @@
+base_path: ./ # working dir
+# environments
+rapids-env: rapids-env/bin/python
+pytorch-env: pytorch-env/bin/python
+# artifacts paths
+embeds_path: embeds # path to embeddings 
+models_path: models # store the models
+helpers_path: helpers # store reformated datasets
+temporal_path: temporal # store external data from FTP (temporal because different report dates are used)
+
+
+base_models: # all models and postprocessing path
+    pb_t5esm4500_raw:
+        embeds: 
+            - t5
+            - esm_small
+        conditional: false
+        bp: 3000
+        mf: 1000
+        cc: 500
+        
+    pb_t5esm4500_cond:
+        embeds: 
+            - t5
+            - esm_small
+        conditional: true
+        bp: 3000
+        mf: 1000
+        cc: 500
+        
+    pb_t54500_raw:
+        embeds: 
+            - t5
+        conditional: false
+        bp: 3000
+        mf: 1000
+        cc: 500
+        
+    pb_t54500_cond:
+        embeds: 
+            - t5
+        conditional: true
+        bp: 3000
+        mf: 1000
+        cc: 500
+        
+    lin_t5_raw:
+        embeds: 
+            - t5
+        conditional: false
+        bp: 10000
+        mf: 2000
+        cc: 1500
+        
+    lin_t5_cond:
+        embeds: 
+            - t5
+        conditional: true
+        bp: 10000
+        mf: 2000
+        cc: 1500
+        
+public_models: # models based on public script
+    nn_serg:
+        source: pytorch-keras-etc-3-blend-cafa-metric-etc.pkl
+        # source: test_nn.pkl
+        
+gcn: # stacking with graph neural network - separated by ontology
+    bp:
+        n_ep: 20
+        store_swa: 10
+        use_swa: 3
+        
+        hidden_size: 16
+        n_layers: 8
+        embed_size: 8
+        
+        preds:
+            - pb_t54500_cond
+            - pb_t54500_raw
+            - lin_t5_cond
+            - lin_t5_raw
+            
+        side_preds:
+            - nn_serg
+            
+        tta:
+            cfg0:
+                - pb_t54500_cond
+                - pb_t54500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+            cfg1:
+                - pb_t5esm4500_cond
+                - pb_t54500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+            cfg2:
+                - pb_t54500_cond
+                - pb_t5esm4500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+            cfg3:
+                - pb_t5esm4500_cond
+                - pb_t5esm4500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+
+    mf:
+        n_ep: 20
+        store_swa: 10
+        use_swa: 3
+        
+        hidden_size: 16
+        n_layers: 8
+        embed_size: 8
+        
+        preds:
+            - pb_t54500_cond
+            - pb_t54500_raw
+            - lin_t5_cond
+            - lin_t5_raw
+            
+        side_preds:
+            - nn_serg
+            
+        tta:
+            cfg0:
+                - pb_t54500_cond
+                - pb_t54500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+            cfg1:
+                - pb_t5esm4500_cond
+                - pb_t54500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+            cfg2:
+                - pb_t54500_cond
+                - pb_t5esm4500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+            cfg3:
+                - pb_t5esm4500_cond
+                - pb_t5esm4500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+                
+    cc:
+        n_ep: 20
+        store_swa: 10
+        use_swa: 3
+        
+        hidden_size: 16
+        n_layers: 8
+        embed_size: 8
+        
+        preds:
+            - pb_t54500_cond
+            - pb_t54500_raw
+            - lin_t5_cond
+            - lin_t5_raw
+            
+        side_preds:
+            - nn_serg
+            
+        tta:
+            cfg0:
+                - pb_t54500_cond
+                - pb_t54500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+            cfg1:
+                - pb_t5esm4500_cond
+                - pb_t54500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+            cfg2:
+                - pb_t54500_cond
+                - pb_t5esm4500_raw
+                - lin_t5_cond
+                - lin_t5_raw
+            cfg3:
+                - pb_t5esm4500_cond
+                - pb_t5esm4500_raw
+                - lin_t5_cond
+                - lin_t5_raw

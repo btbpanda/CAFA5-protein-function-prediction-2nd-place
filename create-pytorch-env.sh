@@ -1,6 +1,7 @@
 #!/bin/bash
 
 pwd
+source ../../user/conda/bin/activate
 conda --version
 
 conda create --solver=libmamba -p $1/pytorch-env python=3.9 -y

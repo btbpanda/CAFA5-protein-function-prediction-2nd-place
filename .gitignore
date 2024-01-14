@@ -1,7 +1,7 @@
 # solution artifacts
 embeds/
 helpers/
-models/
+/models/
 *-env/
 sub/
 temporal/
@@ -11,6 +11,8 @@ Test\ \(Targets\)/
 Train/
 Untitled.ipynb
 wget-log
+sample_submission.tsv
+.ipynb_checkpoints/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

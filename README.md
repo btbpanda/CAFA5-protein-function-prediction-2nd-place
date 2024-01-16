@@ -2,14 +2,14 @@ Hello!
 
 Here are the instructions to reproduce the CAFA5 2nd solution using given code
 
-# Contents
+# CONTENTS
 
 * `nn_solution`                 : scripts for training Neural Network base models
 * `protlib`                     : utils and code to train Py-Boost and LogReg models, data preprocessing and efficient metric computation
 * `protnn`                      : utils and code to train GCN stacker model
 * `CAFA5PIpeline.ipynb`         : CAFA5PIpeline.ipynb - notebook contains all the scripts calls and detailed explanation of each step. Also, contains directory structure (shoul be considered as both `directory_structure.txt` and `entry_points.md`)
-* `Download.ipynb`              : since produced artifacts are quite large, we consider to store it in the cloud storage, instead uploading it on Kagge. To download all trained models, please execute this notebook. Explanation of contents is also provided 
-* `config.yaml`                 : config used to execute training and inference. **Note!!** the artifacts will be stored for 6 month only. After that, you will need to compute it by yourself.
+* `Download.ipynb`              : since produced artifacts are quite large, we consider to store it in the cloud storage, instead uploading it on Kagge. To download all trained models, please execute this notebook. Explanation of contents is also provided. **Note!!** the artifacts will be stored for 6 month only. After that, you will need to compute it by yourself.
+* `config.yaml`                 : config used to execute training and inference. 
 * `create-pytorch-env.sh`       : install all the requirements to run all deep learning parts
 * `create-rapids-env.sh`        : install all the requirements to run processing and ML steps
 * `CAFA5docs.pdf`               : detailed solution description
